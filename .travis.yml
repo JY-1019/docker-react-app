@@ -3,14 +3,14 @@ sudo: required
 language: generic
 
 services:
-- docker
+  - docker
 
 before_install:
-- echo "strat creating an image with dockerfile"
-- docker build -t toy0koy/docker-react-app -f Dockerfile.dev .
+  - echo "strat creating an image with dockerfile"
+  - docker build -t toy0koy/docker-react-app -f Dockerfile.dev .
 
 script:
-- docker run -e CI=true toy0koy/docker-react-app npm run test -- --coverage
+  - docker run -e CI=true toy0koy/docker-react-app npm run test -- --coverage
 
 after_success:
-- echo "Test Success"
+  - echo "Test Success"

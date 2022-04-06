@@ -28,8 +28,10 @@ services: # 이곳에 실행하려는 컨테이너들을 정의
       dockerfile: Dockerfile.dev
 
     volumes:
-    
+
       - /usr/src/app/node_modules
       - ./:/usr/src/app
+    environment:  # 리액트 핫로딩 작동 옵션을 true 로 줘야 Volume 기능을 정상적으로 사용할 수 있다.
+      - CHOKIDAR_USEPOLLING=true
 
-    command: ["npm", "rum", "test"]
+    command: ["npm", "run", "test"]
